@@ -3,9 +3,9 @@ body {
 }
 
 .weather-app {
-  max-width: 1000px;
+  max-width: 2000px;
   margin: 20px auto;
-  padding: 50px 80px;
+  padding: 50px 100px 50px 50px;
   border: 10px solid #dadde1;
   border-radius: 50px;
   color: rgb(33, 96, 163);
@@ -23,4 +23,12 @@ li {
   font-size: 20px;
   font-weight: 100;
   line-height: 19px;
+}
+
+.weatherforecastpreview {
+  padding: 5px;
+}
+
+.col {
+  text-align: center;
 }
