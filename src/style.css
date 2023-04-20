@@ -29,6 +29,8 @@ li {
   padding: 5px;
 }
 
-.col {
+.container text-center {
   text-align: center;
+  font-size: smaller;
+  margin: 10px;
 }
