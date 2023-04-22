@@ -29,6 +29,7 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
+
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -37,18 +38,8 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
-function search(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#search-text-input");
-  console.log(searchInput);
-  let h1 = document.querySelector("h1");
+let apiKey = "01731f1c7322897af4e02878c35e51cb";
+let city = "Boston";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-  h1.innerHTML = `${searchInput.value}`;
-  let apiKey = "01731f1c7322897af4e02878c35e51cb";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${apiKey}&units=metric`;
-
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
-}
-
-console.log(search);
-let form = document.querySelector("#search-form");
+axios.get(`${apiUrl}&appid=${apiKey}`).then(displayTemperature);
