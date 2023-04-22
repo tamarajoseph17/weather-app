@@ -38,8 +38,18 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
-let apiKey = "01731f1c7322897af4e02878c35e51cb";
-let city = "Boston";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "2ff29bed3181c3526c35cc5408037f85";
+  let city = "Boston";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(displayTemperature);
+}
 
-axios.get(`${apiUrl}&appid=${apiKey}`).then(displayTemperature);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#search-text-input");
+  search(cityInputElement.value);
+}
+
+let form = document.querySelector("#weather-app");
+form.addEventListener("submit", handleSubmit);
